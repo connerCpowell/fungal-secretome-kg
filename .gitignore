@@ -1,0 +1,5 @@
+embeddings/*.npz
+tools/signalp-5.0b/*
+data/pfam/
+domain_annotation/pfam.domtblout
+

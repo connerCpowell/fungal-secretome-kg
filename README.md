@@ -123,8 +123,9 @@ MATCH (p:Protein)-[:IN_CLUSTER]->(c:Cluster)
 RETURN p, c
 LIMIT 25;
 
+---
 
-Future Work
+## 🌱 Future Work
 
 Expand to other fungal species
 
@@ -134,7 +135,9 @@ Cross-species cluster comparison and GO enrichment analysis
 
 Interactive web-based visualization of KG
 
-References
+---
+
+## 📚 References
 
 SignalP 5.0: https://services.healthtech.dtu.dk/service.php?SignalP-5.0
 

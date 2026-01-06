@@ -163,9 +163,29 @@ fungal-secretome-kg/
 
 ## 🔍 Neo4j Visualization
 
-1. Start Neo4j (Docker recommended).  
-2. Import processed TSVs using `LOAD CSV WITH HEADERS`.  
-3. Explore graph using queries like:
+## 📸 Neo4j Graph Visualizations
+
+### Protein–Cluster Structure
+
+![Protein–Cluster Graph](docs/figures/protein_cluster_overview.png)
+
+*Figure 1. Proteins grouped into embedding-derived clusters. Node proximity reflects sequence similarity.*
+
+---
+
+### Cluster–GO Relationships
+
+![Cluster–GO Graph](docs/figures/cluster_go_network.png)
+
+*Figure 2. Enriched GO terms shared across multiple protein clusters, revealing functional overlap.*
+
+---
+
+### Cross-Cluster GO Sharing
+
+![GO Overlap Graph](docs/figures/go_overlap.png)
+
+*Figure 3. Multiple clusters connecting to the same GO terms, indicating conserved functional roles.*
 
 ```cypher
 MATCH (p:Protein)-[:IN_CLUSTER]->(c:Cluster)

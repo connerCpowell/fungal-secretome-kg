@@ -6,7 +6,7 @@
 
 ---
 
-## 🚀 Project Overview
+## Project Overview
 
 This project demonstrates the construction of a **knowledge graph (KG)** for the **fungal secretome**, with the goal of linking **protein sequences → embeddings → clusters → functional annotations (GO terms)**. It showcases capabilities in:
 
@@ -21,7 +21,7 @@ The long-term goal is to establish a validated pipeline that can be applied to l
 
 ---
 
-## 🧠 Why Yeast? Why the Secretome?
+## Why Yeast? Why the Secretome?
 
 **Why Saccharomyces cerevisiae?**
 
@@ -42,7 +42,7 @@ Secreted proteins were chosen because they:
 
 For mycelium-based materials, the secretome represents the functional interface governing growth, adhesion, and structural integrity.
 
-## 🧬 Dataset
+## Dataset
 
 - Protein sequences for _S. cerevisiae_ (secretome subset)
 - SignalP-5.0 predictions for secretion
@@ -59,7 +59,7 @@ For mycelium-based materials, the secretome represents the functional interface 
 
 ---
 
-## ⚙️ Workflow
+## Workflow
 
 1. **Secreted protein prediction**
 
@@ -97,7 +97,7 @@ For mycelium-based materials, the secretome represents the functional interface 
 
 ---
 
-## 📊 Key Visualizations & Insights
+## Key Visualizations & Insights
 
 **Embedding-based protein clusters**
 
@@ -121,7 +121,7 @@ Here, **GO terms act as bridges** between clusters, highlighting complementary v
 
 ---
 
-## 🗂 Project Structure
+## Project Structure
 
 ```text
 fungal-secretome-kg/
@@ -145,7 +145,7 @@ fungal-secretome-kg/
 
 ---
 
-## 📊 Graph Schema
+## Graph Schema
 
 **Nodes**:
 
@@ -165,9 +165,7 @@ fungal-secretome-kg/
 
 ---
 
-## 🔍 Neo4j Visualization
-
-## 📸 Neo4j Graph Visualizations
+##  Neo4j Graph Visualizations
 
 ### Protein–Cluster Structure
 
@@ -214,7 +212,7 @@ LIMIT 60;
 
 ---
 
-## 🌱 Future Work
+## Future Work
 
 - Expand to other fungal species (e.g. _Ganoderma_, _Pleurotus_)
 
@@ -228,7 +226,7 @@ LIMIT 60;
 
 ---
 
-## 📚 References
+## References
 
 **SignalP 5.0**
 https://services.healthtech.dtu.dk/service.php?SignalP-5.0

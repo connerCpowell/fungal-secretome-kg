@@ -167,7 +167,7 @@ fungal-secretome-kg/
 
 ### Protein–Cluster Structure
 
-![Protein–Cluster Graph](docs/figures/protein_cluster_graph.png)
+![Protein–Cluster Graph](docs/figures/cluster_protein_graph.png)
 
 *Figure 1. Proteins grouped into embedding-derived clusters. Node proximity reflects sequence similarity.*
 

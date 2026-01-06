@@ -1,9 +1,9 @@
-# Graph-based Functional Inference of Secreted Fungal Enzymes Using Protein Language Model Embeddings
+# Knowledge graph-based Functional Inference of Secreted Fungal Enzymes Using Protein Language Model Embeddings
 
 
 ![Fungi](https://upload.wikimedia.org/wikipedia/commons/7/73/Saccharomyces_cerevisiae_cells.jpg)
 
-**A knowledge graph of secreted proteins in *Saccharomyces cerevisiae* integrating sequence embeddings, Pfam domains, and functional annotations.**
+**A knowledge graph of secreted fungal proteins integrating protein language model embeddings, domain annotations, and functional ontology data.**
 
 ---
 
@@ -16,16 +16,41 @@ This project demonstrates the construction of a **knowledge graph (KG)** for the
 - **Functional enrichment**: GO term enrichment per protein cluster  
 - **Knowledge graph construction**: ingesting into Neo4j for visualization and exploration  
 
-The final KG allows **exploration of functional patterns, cluster relationships, and protein similarity networks**.
+This KG allows **exploration of functional patterns, cluster relationships, and protein similarity networks**.
+
+The long-term goal is to establish a validated pipeline that can be applied to less well-characterized fungi (e.g. oyster and reishi mushrooms) relevant to biomaterials and mycelium-based construction, where secreted enzymes play a critical structural and biochemical role.
 
 ---
 
+## 🧠 Why Yeast? Why the Secretome?
+
+**Why Saccharomyces cerevisiae?**
+- A gold-standard fungal model organism
+- Extensive Pfam and GO annotation coverage
+- Enables validation of embedding-based methods against known biology
+
+Using yeast allows us to ask:
+**Do unsupervised sequence embeddings recover known functional structure without using annotations during clustering?**
+
+**Why the secretome?**
+
+Secreted proteins were chosen because they:
+
+- Are functionally enriched (enzymes, cell wall modifiers, polysaccharide metabolism)
+- Directly mediate extracellular structure and remodeling
+- Are highly relevant to fungal biomass, material properties, and environmental interaction
+
+For mycelium-based materials, the secretome represents the functional interface governing growth, adhesion, and structural integrity.
+
+
 ## 🧬 Dataset
 
-- Protein sequences for *S. cerevisiae* (secretome subset)  
+- Protein sequences for *S. cerevisiae* (secretome subset)
+- SignalP-5.0 predictions for secretion  
 - Pfam domain annotations  
 - GO term mappings (via `pfam2go`)  
-- SignalP-5.0 predictions for secretion  
+- ESM protein language model embeddings
+
 
 **Processed files** (stored in `/data/processed`):
 
@@ -69,9 +94,33 @@ The final KG allows **exploration of functional patterns, cluster relationships,
 
 ---
 
+## 📊 Key Visualizations & Insights
+
+**Embedding-based protein clusters**
+
+Protein language model embeddings form **cohesive clusters** despite no functional labels being used during clustering, indicating that sequence alone captures meaningful structure.
+
+--- 
+
+**Functional enrichment of clusters**
+
+Only a subset of clusters shows statistically significant GO enrichment, reflecting both:
+- Well-annotated functional modules
+- Potentially under-characterized or emergent sequence-driven structure not fully captured by GO
+
+---
+
+**Functional overlap across clusters**
+
+Proteins from different embedding clusters share GO terms, revealing **functional convergence despite sequence divergence**.
+Here, **GO terms act as bridges** between clusters, highlighting complementary views of protein organization.
+
+---
+
 ## 🗂 Project Structure
 
-ungal-secretome-kg/
+```text
+fungal-secretome-kg/
 │
 ├─ data/
 │ ├─ raw/ # raw sequences and pfam2go
@@ -88,7 +137,7 @@ ungal-secretome-kg/
 ├─ Dockerfile / docker-compose # Neo4j setup
 │
 └─ README.md
-
+```
 
 ---
 
@@ -122,27 +171,33 @@ ungal-secretome-kg/
 MATCH (p:Protein)-[:IN_CLUSTER]->(c:Cluster)
 RETURN p, c
 LIMIT 25;
-
+```
 ---
 
 ## 🌱 Future Work
 
-Expand to other fungal species
+- Expand to other fungal species (e.g. *Ganoderma*, *Pleurotus*)
 
-Add protein similarity edges based on embeddings
+- Add protein similarity edges based derived from ESM embeddings
 
-Cross-species cluster comparison and GO enrichment analysis
+- Identify cross-cluster proteins with shared GO annotations
 
-Interactive web-based visualization of KG
+- Preform cross-species cluster comparison and GO enrichment comparisons
+
+- Interactive web-based visualization of KG
 
 ---
 
 ## 📚 References
 
-SignalP 5.0: https://services.healthtech.dtu.dk/service.php?SignalP-5.0
+**SignalP 5.0**
+https://services.healthtech.dtu.dk/service.php?SignalP-5.0
 
-Pfam Database: https://pfam.xfam.org/
+**Pfam Database**
+https://pfam.xfam.org/
 
-ESM Protein Language Models: https://github.com/facebookresearch/esm
+**ESM Protein Language Models**
+https://github.com/facebookresearch/esm
 
-Neo4j Graph Database: https://neo4j.com/
+**Neo4j Graph Database**
+https://neo4j.com/

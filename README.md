@@ -93,6 +93,9 @@ For mycelium-based materials, the secretome represents the functional interface 
      - `:IN_CLUSTER` → Protein → Cluster
      - `:HAS_GO` → Protein → GO
      - `:ENRICHED_FOR` → Cluster → GO
+     - `:FUNCTIONALLY_ASSOCIATED_WITH` → Protein → Protein
+   - `FUNCTIONALLY_ASSOCIATED_WITH` represents inferred functional relatedness and does not imply direct physical interaction.
+
    - Optional: future cross-species expansion
 
 ---
@@ -130,6 +133,8 @@ fungal-secretome-kg/
 │ ├─ raw/ # raw sequences and pfam2go
 │ └─ processed/ # TSVs for ingestion
 │
+├─ doc/figures/*
+|
 ├─ scripts/
 │ ├─ compute_esm_embeddings.py
 │ ├─ annotate_proteins_with_go.py
@@ -159,11 +164,14 @@ The knowledge graph consists of protein nodes connected to embedding-derived clu
 
 **Relationships**:
 
-| Type         | From    | To      | Properties                      |
-| ------------ | ------- | ------- | ------------------------------- |
-| IN_CLUSTER   | Protein | Cluster | —                               |
-| HAS_GO       | Protein | GO      | —                               |
-| ENRICHED_FOR | Cluster | GO      | p_value, cluster_size, go_count |
+
+| Type                         | From    | To      | Properties                             |
+| ---------------------------- | ------- | ------- | -------------------------------------- |
+| IN_CLUSTER                   | Protein | Cluster | —                                      |
+| HAS_GO                       | Protein | GO      | —                                      |
+| ENRICHED_FOR                 | Cluster | GO      | p_value, cluster_size, go_count        |
+| FUNCTIONALLY_ASSOCIATED_WITH | Protein | Protein | shared_go_terms, shared_cluster, score |
+
 
 ---
 

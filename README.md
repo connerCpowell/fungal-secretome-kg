@@ -145,7 +145,9 @@ fungal-secretome-kg/
 
 ---
 
-## Graph Schema
+## Graph Schema (Neo4j)
+The knowledge graph consists of protein nodes connected to embedding-derived clusters and functional ontology terms.
+
 
 **Nodes**:
 
@@ -212,15 +214,44 @@ LIMIT 60;
 
 ---
 
+### All proteins with cluster + GO terms
+
+![bigMap](docs/figures/all_protein_map.svg)
+
+Figure 4. A Very busy graph showing all the protiens with clusters and associations in Yeast Secretome
+```cypher
+MATCH (p:Protein)
+OPTIONAL MATCH (p)-[:IN_CLUSTER]->(c:Cluster)
+OPTIONAL MATCH (p)-[:HAS_GO]->(g:GO)
+RETURN p, c, collect(g);
+```
+
+---
+
+### Example protein: BGL2 (β-glucanase)
+
+![BGL2](docs/figures/BGL2_function_cluster.svg)
+
+Figure 5. Example of sp|P15703|BGL2_YEAST protein's associated cluster and functionality based on assocaited GO terms.
+```cypher
+MATCH (p:Protein {protein_id: "sp|P15703|BGL2_YEAST"})
+OPTIONAL MATCH (p)-[:IN_CLUSTER]->(c:Cluster)
+OPTIONAL MATCH (p)-[:HAS_GO]->(g:GO)
+RETURN p, c, collect(g);
+```
+
+------
+
+
 ## Future Work
 
 - Expand to other fungal species (e.g. _Ganoderma_, _Pleurotus_)
 
-- Add protein similarity edges based derived from ESM embeddings
+- Add protein similarity edges derived from ESM embeddings
 
 - Identify cross-cluster proteins with shared GO annotations
 
-- Preform cross-species cluster comparison and GO enrichment comparisons
+- Perform cross-species cluster comparison and GO enrichment comparisons
 
 - Interactive web-based visualization of KG
 
